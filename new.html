@@ -185,7 +185,7 @@
 <body>
   <header>
     <h1>ALLY RHODES</h1>
-    <p>Audio Plugin Developer & Designer specializing in GUIs, UX, and front-end development for creative tools.</p>
+    <p>Hi! I'm a full-stack audio plugin developer and designer building software instruments and effect plugins from concept to release. As a former musician and artist, I can help you create tools that feel intuitive, inspiring, and musically informed.</p>
   </header>
 
   <div class="marquee">
@@ -265,9 +265,10 @@
   </section>
 
   <section class="contact">
-    <h2>Contact Me</h2>
+    <h2>Got a project?</h2>
+    <p>Send me a message and let's make it happen.</p>
 
-    <form id="contactForm" action="https://formsubmit.co/e7ab10aa233d3f3451ef506cec5f5839" method="POST" />
+    <form id="contactForm"/>
       <input type="text" name="name" placeholder="Your Name" required>
       <input type="email" name="email" placeholder="Your Email" required>
       <textarea name="message" rows="5" placeholder="Your Message" style="resize:none;" required></textarea>
@@ -280,7 +281,7 @@
     document.getElementById("contactForm").addEventListener("submit", async function (e) {
       e.preventDefault();
       const form = e.target;
-      const url = form.getAttribute("action") || "https://formsubmit.co/ajax/e7ab10aa233d3f3451ef506cec5f5839";
+      const url = "https://formsubmit.co/ajax/e7ab10aa233d3f3451ef506cec5f5839";
       const formData = new FormData(form);
 
       try {
