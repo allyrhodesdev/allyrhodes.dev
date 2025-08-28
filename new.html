@@ -21,7 +21,7 @@
     }
 
     header h1 {
-      font-size: 8.5rem;
+      font-size: clamp(3.5rem, 10vw, 8.5rem);
       font-weight: 700;
       margin-bottom: 1rem;
       margin-top: 1rem;
@@ -243,12 +243,15 @@
 
   <section class="contact">
     <h2>Contact Me</h2>
-    <form>
+    <form action="https://formsubmit.co/hi@allyrhodes.dev" method="POST" />
       <input type="text" name="name" placeholder="Your Name" required>
       <input type="email" name="email" placeholder="Your Email" required>
       <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
       <button type="submit">Send</button>
+
+      <input type="hidden" name="_next" value="https://allyrhodes.dev/work">
     </form>
   </section>
+  <script src="https://kwesforms.com/v2/kwes-script.js" defer></script>
 </body>
 </html>
