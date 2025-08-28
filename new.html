@@ -243,15 +243,42 @@
 
   <section class="contact">
     <h2>Contact Me</h2>
-    <form action="https://formsubmit.co/e7ab10aa233d3f3451ef506cec5f5839" method="POST" />
+    <form id="contactForm" action="https://formsubmit.co/e7ab10aa233d3f3451ef506cec5f5839" method="POST" />
       <input type="text" name="name" placeholder="Your Name" required>
       <input type="email" name="email" placeholder="Your Email" required>
       <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
       <button type="submit">Send</button>
 
-      <input type="hidden" name="_next" value="https://allyrhodes.dev/work">
+      <!-- <input type="hidden" name="_next" value="https://allyrhodes.dev/work"> -->
     </form>
+
+    <div id="thankYou" style="display:none;">Thanks for your submission!</div>
+
+    <script>
+    document.getElementById("contactForm").addEventListener("submit", async function(e) {
+      e.preventDefault();
+      const form = e.target;
+      const formData = new FormData(form);
+
+      try {
+      const response = await fetch("https://formsubmit.co/ajax/hi@allyrhodes.dev", {
+        method: "POST",
+        body: formData
+      });
+
+      if (response.ok) {
+        form.reset(); // clear the form
+        document.getElementById("thankYou").style.display = "block"; // show thanks
+      } else {
+        alert("Oops! Something went wrong.");
+      }
+    } catch (error) {
+      alert("Network error, please try again later.");
+    }
+  });
+</script>
+
+
   </section>
-  <script src="https://kwesforms.com/v2/kwes-script.js" defer></script>
 </body>
 </html>
