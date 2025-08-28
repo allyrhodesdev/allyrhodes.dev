@@ -267,7 +267,21 @@
 
       if (response.ok) {
         form.reset(); // clear the form
-        document.getElementById("thankYou").style.display = "block"; // show thanks
+        
+         const thankYou = document.getElementById("thankYou");
+
+        // Show + fade in
+        thankYou.classList.add("show");
+
+        // Wait 3s, then fade out
+        setTimeout(() => {
+          thankYou.style.opacity = "0";
+          // After transition ends, hide it
+          thankYou.addEventListener("transitionend", () => {
+            thankYou.classList.remove("show");
+            thankYou.style.opacity = "";
+          }, { once: true });
+        }, 3000);
       } else {
         alert("Oops! Something went wrong.");
       }
