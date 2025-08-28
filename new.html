@@ -157,6 +157,21 @@
     .contact button:hover {
       background: #333;
     }
+
+    #thankYou {
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.6s ease, visibility 0.6s ease;
+      margin: 0.75rem;
+      color: green;
+      font-weight: 500;
+    }
+
+    #thankYou.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
   </style>
 </head>
 <body>
@@ -244,12 +259,12 @@
   <section class="contact">
     <h2>Contact Me</h2>
     
-    <div id="thankYou" style="display:none; margin:1rem;">Thanks for getting in touch!</div>
+    <div id="thankYou">Thanks for getting in touch!</div>
 
     <form id="contactForm" action="https://formsubmit.co/e7ab10aa233d3f3451ef506cec5f5839" method="POST" />
       <input type="text" name="name" placeholder="Your Name" required>
       <input type="email" name="email" placeholder="Your Email" required>
-      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+      <textarea name="message" rows="5" placeholder="Your Message" style="resize:none;" required></textarea>
       <button type="submit">Send</button>
     </form>
 
@@ -267,21 +282,14 @@
 
       if (response.ok) {
         form.reset(); // clear the form
-        
-         const thankYou = document.getElementById("thankYou");
-
-        // Show + fade in
-        thankYou.classList.add("show");
-
-        // Wait 3s, then fade out
-        setTimeout(() => {
-          thankYou.style.opacity = "0";
-          // After transition ends, hide it
-          thankYou.addEventListener("transitionend", () => {
-            thankYou.classList.remove("show");
-            thankYou.style.opacity = "";
-          }, { once: true });
+        // document.getElementById("thankYou").style.display = "block"; // show thanks
+        const thank = document.getElementById("thankYou");
+        thank.classList.add("show");          // fade in
+        clearTimeout(thank.__hideTimer);      // in case of rapid re-submits
+        thank.__hideTimer = setTimeout(() => {
+          thank.classList.remove("show");     // fade out after 3s
         }, 3000);
+        
       } else {
         alert("Oops! Something went wrong.");
       }
