@@ -36,6 +36,12 @@ header p {
   color: #555;
 }
 
+.section-title {
+  text-align: center;
+  font-size: 3rem;
+  margin-bottom:0rem;
+}
+
 .portfolio {
   display: grid;
   grid-template-columns: repeat(4, 1fr); /* max 4 per row */
