@@ -32,6 +32,7 @@ header p {
 }
 
 .spotify-link:hover {
+  font-style: inherit;
   color: #555;
 }
 
